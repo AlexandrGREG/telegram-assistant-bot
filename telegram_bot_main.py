@@ -3,11 +3,11 @@ from aiogram import Bot, Dispatcher
 from config import BOT_TOKEN
 import asyncio
 
-from handlers import router  # твій маршрутизатор
+from handlers import notes  # твій маршрутизатор
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
-dp.include_router(router)
+dp.include_router(notes.router)
 
 
 async def run_bot():
