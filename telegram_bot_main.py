@@ -1,0 +1,14 @@
+# telegram_bot_main.py
+from aiogram import Bot, Dispatcher
+from config import TOKEN
+import asyncio
+
+from handlers import router  # твій маршрутизатор
+
+bot = Bot(token=TOKEN)
+dp = Dispatcher()
+dp.include_router(router)
+
+
+async def run_bot():
+    await dp.start_polling(bot)
