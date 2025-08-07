@@ -43,7 +43,8 @@ async def start_handler(message: types.Message):
     await message.answer(
         "<b>Привіт!</b> Я — твій Telegram-помічник ✨\n\n"
         "Вибери дію нижче 👇",
-        reply_markup=menu_keyboard
+        reply_markup=menu_keyboard,
+        parse_mode="HTML"
     )
 
 
@@ -98,7 +99,10 @@ async def show_note_content(callback: CallbackQuery):
     notes = load_notes()
     user_notes = notes.get(user_id, {})
     note_text = user_notes.get(title, "")
-    await callback.message.answer(f"📌<b>{title}</b>\n{note_text if note_text else 'Порожня нотатка.'}")
+    await callback.message.answer(
+        f"📌<b>{title}</b>\n{note_text if note_text else 'Порожня нотатка.'}",
+        parse_mode="HTML"
+    )
 
 
 @router.callback_query(F.data.startswith("delete_note|"))
