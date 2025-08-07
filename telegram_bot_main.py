@@ -1,11 +1,11 @@
 # telegram_bot_main.py
 from aiogram import Bot, Dispatcher
-from config import TOKEN
+from config import BOT_TOKEN
 import asyncio
 
 from handlers import router  # твій маршрутизатор
 
-bot = Bot(token=TOKEN)
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 dp.include_router(router)
 
